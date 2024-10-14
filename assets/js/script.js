@@ -60,9 +60,10 @@ for (let i = 0; i < teamMembers.length; i++) {
 
 function getMemberCardMarkup(member) {
 
+  // destrutturo l'oggetto in tre constanti con le sue tre proprietà
   const {name, role, email, img} = member;
 
-
+  // la funzione restituisce il markup che devo aggiungere alla DOM
   return`
     <div class="col-12 col-md-6 col-xl-4 mb-4">
       <div class="d-flex align-items-center bg-dark">
