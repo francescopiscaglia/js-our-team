@@ -73,13 +73,7 @@ formEL.addEventListener("submit", function(e) {
     alert("Per favore inserisci dei dati validi");
     return;
   };
-
-  // if (name.length < 3 || role.length < 3) {
-  //   alert("Per favore inserisci dei dati validi");
-  //   formEL.reset();
-  //   return;
-  // }
-
+  
   // creo un nuovo oggetto con i dati nel nuovo membro
   const newMember = {
     name,
@@ -91,7 +85,8 @@ formEL.addEventListener("submit", function(e) {
   // richiamo la funzione per il markup
   const markup = getMemberCardMarkup(newMember);
 
-  memberCardsEL.insertAdjacentHTML("beforeend", markup)
+  // aggiorno la DOM con il nuovo membro
+  memberCardsEL.insertAdjacentHTML("beforeend", markup);
 
   formEL.reset();
 });
@@ -124,8 +119,8 @@ function getMemberCardMarkup(member) {
 function isValid(name, role) {
 
   if(name.length < 3 || role.length < 3) {
-    return false
-  }
+    return false;
+  };
 
-  return true
-}
+  return true;
+};
