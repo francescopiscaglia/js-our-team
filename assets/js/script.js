@@ -40,7 +40,10 @@ const teamMembers = [
 
 // seleziono l'elemento dalla DOM
 const memberCardsEL = document.getElementById("member-cards");
-// console.log(memberCardsEL);
+
+// seleziono il form dalla DOM
+const formEL = document.querySelector("form");
+// console.log(formEL);
 
 // ciclo all'interno dell'array per recuperare il singolo membro
 for (let i = 0; i < teamMembers.length; i++) {
@@ -50,14 +53,26 @@ for (let i = 0; i < teamMembers.length; i++) {
 
   // invoco la funzione per recuperare le proprietà del singolo oggetto
   const markup = getMemberCardMarkup(singleMember);
-  console.log(markup);
 
   // aggiungo il markup alla DOM
   memberCardsEL.insertAdjacentHTML("beforeend", markup);
 };
 
 
+// event listeners 
+formEL.addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  // salvo i valori degli input
+  const newName = document.getElementById("full-name").value;
+  const newEmail = document.getElementById("e-mail").value;
+  const newRole = document.getElementById("role").value;
+
+});
+
+
+
+// funzione per aggiungere il markup
 function getMemberCardMarkup(member) {
 
   // destrutturo l'oggetto in tre constanti con le sue tre proprietà
