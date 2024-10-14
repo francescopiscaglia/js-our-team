@@ -58,16 +58,42 @@ for (let i = 0; i < teamMembers.length; i++) {
   memberCardsEL.insertAdjacentHTML("beforeend", markup);
 };
 
-
 // event listeners 
 formEL.addEventListener("submit", function(e) {
   e.preventDefault();
 
   // salvo i valori degli input
-  const newName = document.getElementById("full-name").value;
-  const newEmail = document.getElementById("e-mail").value;
-  const newRole = document.getElementById("role").value;
+  let name = document.getElementById("full-name").value;
+  let email = document.getElementById("e-mail").value;
+  let role = document.getElementById("role").value;
 
+  const isValidInput = isValid(name, role);
+ 
+  if (!isValidInput) {
+    alert("Per favore inserisci dei dati validi");
+    return;
+  };
+
+  // if (name.length < 3 || role.length < 3) {
+  //   alert("Per favore inserisci dei dati validi");
+  //   formEL.reset();
+  //   return;
+  // }
+
+  // creo un nuovo oggetto con i dati nel nuovo membro
+  const newMember = {
+    name,
+    role,
+    email,
+    img: "./assets/img/foto cv.JPG"
+  };
+
+  // richiamo la funzione per il markup
+  const markup = getMemberCardMarkup(newMember);
+
+  memberCardsEL.insertAdjacentHTML("beforeend", markup)
+
+  formEL.reset();
 });
 
 
@@ -81,9 +107,9 @@ function getMemberCardMarkup(member) {
   // la funzione restituisce il markup che devo aggiungere alla DOM
   return`
     <div class="col-12 col-md-6 col-xl-4 mb-4">
-      <div class="d-flex align-items-center bg-dark">
+      <div class="d-flex align-items-center bg-dark rounded">
         <div class="col-3">
-          <img src="${img}" alt="" class="">
+          <img src="${img}" alt="" class="rounded">
         </div>
         <div class="col-9 ps-3 text-light">
           <h5 class="fw-bold">${name}</h5>
@@ -94,3 +120,12 @@ function getMemberCardMarkup(member) {
     </div>
   `;
 };
+
+function isValid(name, role) {
+
+  if(name.length < 3 || role.length < 3) {
+    return false
+  }
+
+  return true
+}
