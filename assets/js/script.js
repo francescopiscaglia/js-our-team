@@ -36,3 +36,31 @@ const teamMembers = [
     img: "img/female3.png"
   }
 ];
+
+
+
+
+
+
+
+
+function getMemberCardMarkup(member) {
+
+  const {name, role, email, image} = member;
+
+
+  return`
+    <div class="col-12 col-md-6 mb-4">
+      <div class="d-flex align-items-center bg-dark">
+          <div class="col-3">
+              <img src="${image}" alt="">
+          </div>
+          <div class="col-9 ps-3 text-light">
+              <h5 class="fw-bold">${name}</h5>
+              <div>${role}</div>
+              <a href="#" class="e-mail">${email}</a>
+          </div>
+      </div>
+    </div>
+  `;
+};
